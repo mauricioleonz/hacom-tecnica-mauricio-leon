@@ -1,0 +1,33 @@
+server:
+  port: ${apiPort}
+
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  data:
+    mongodb:
+      uri: ${mongodbUri}
+      database: ${mongodbDatabase}
+
+mongodbDatabase: HacomDB
+mongodbUri: "mongodb://127.0.0.1:27017"
+apiPort: 9898
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    prometheus:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
